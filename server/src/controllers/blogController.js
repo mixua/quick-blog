@@ -119,6 +119,12 @@ export const unpublishBlog = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'Blog unpublished successfully' })
 })
 
+// Public comment shape: `content` is exposed as `text`
+export const toCommentDto = (comment) => {
+  const { content, ...rest } = comment.toObject()
+  return { ...rest, text: content }
+}
+
 export const addComment = asyncHandler(async (req, res) => {
   const { blog, name, content } = req.body
   await Comment.create({ blog, name, content })
@@ -126,12 +132,12 @@ export const addComment = asyncHandler(async (req, res) => {
 })
 
 export const getBlogComments = asyncHandler(async (req, res) => {
-  const { blogId } = req.body
+  const { blogId } = req.params
   const comments = await Comment.find({ blog: blogId, isApproved: true }).sort({ createdAt: -1 })
   res.json({
     success: true,
     count: comments.length,
-    comments
+    comments: comments.map(toCommentDto)
   })
 })
 

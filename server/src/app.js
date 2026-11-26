@@ -7,6 +7,7 @@ import { notFound, errorHandler } from './middleware/errorHandler.js'
 import appRouter from './routes/appRoutes.js'
 import adminRouter from './routes/adminRoutes.js'
 import blogRouter from './routes/blogRoutes.js'
+import commentRouter from './routes/commentRoutes.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -21,6 +22,7 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
 app.use('/', appRouter)
 app.use('/api/admin', adminRouter)
 app.use('/api/blog', blogRouter)
+app.use('/api/comment', commentRouter)
 
 app.use(notFound)
 app.use(errorHandler)

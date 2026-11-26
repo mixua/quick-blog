@@ -4,7 +4,7 @@ import { API_ENDPOINTS } from '../constants/apiEndpoints'
 export const commentApi = {
   // Get comments by blog ID
   getByBlogId: async (blogId) => {
-    return await axios.post(API_ENDPOINTS.COMMENTS_BY_BLOG, { blogId })
+    return await axios.get(API_ENDPOINTS.COMMENTS_BY_BLOG(blogId))
   },
 
   // Add new comment

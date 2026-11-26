@@ -7,8 +7,8 @@ export const API_ENDPOINTS = {
   BLOG_DELETE: (id) => `/api/blog/${id}`,
   
   // Comment endpoints
-  COMMENTS_BY_BLOG: '/api/blog/comments',
-  COMMENT_ADD: '/api/blog/add-comment',
+  COMMENTS_BY_BLOG: (blogId) => `/api/comment/blog/${blogId}`,
+  COMMENT_ADD: '/api/comment/add',
   COMMENT_DELETE: (id) => `/api/comment/${id}`,
   COMMENT_APPROVE: (id) => `/api/comment/approve/${id}`,
   
