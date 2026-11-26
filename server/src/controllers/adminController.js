@@ -63,7 +63,8 @@ export const getAllComments = asyncHandler(async (req, res) => {
     if (commentObj.blog && commentObj.blog.image) {
       commentObj.blog = transformBlogImage(commentObj.blog, req)
     }
-    return commentObj
+    const { content, ...rest } = commentObj
+    return { ...rest, text: content }
   })
 
   res.json({

@@ -21,7 +21,7 @@ function CommentItem({ comment, index = 0 }) {
             {formatRelativeTime(comment.createdAt)}
           </time>
         </div>
-        <p className='mt-2 break-words font-serif text-lg leading-relaxed text-ink'>{comment.content}</p>
+        <p className='mt-2 break-words font-serif text-lg leading-relaxed text-ink'>{comment.text}</p>
       </div>
     </Reveal>
   )
